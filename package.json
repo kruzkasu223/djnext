@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next build && next export",
+    "move:exported": "rm -rf ./static && cp ./out ./static",
+    "export:djnext": "time -f 'Done in %E' sh -c 'rm -rf ./out && yarn export' && echo '----------Done----------'",
+    "dev:djnext": "onchange -k './src/**' -- yarn export:djnext"
   },
   "dependencies": {
     "next": "12.2.4",
@@ -15,6 +19,7 @@
   },
   "devDependencies": {
     "eslint": "8.21.0",
-    "eslint-config-next": "12.2.4"
+    "eslint-config-next": "12.2.4",
+    "onchange": "^7.1.0"
   }
 }
